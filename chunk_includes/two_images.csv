@@ -1,0 +1,13 @@
+group,item,inflection,audio,duration,singular_image,plural_image
+A,1,plural,study.wav,2676,study.png,catN_sleep.png
+A,2,singular,exercise.wav,2650,catN_dance.png,exercise.png
+A,3,plural,riceA_eat.wav,2598,drinkwater.png,haveameal.png
+A,4,singular,rabbitN_pigL_scribble.wav,2546,rabbitN_pigL_scribble.png,rabbitL_pigN_scribble.png
+A,5,plural,tigerN_lionL_shout.wav,2676,tigerL_lionN_shout.png,tigerN_lionL_shout.png
+A,6,singular,zebraN_rabbitL_lean.wav,2650,zebraN_rabbitL_lean.jpeg,zebraL_rabbitN_lean.jpeg
+B,1,singular,study.wav,2833,catN_sleep.png,study.png
+B,2,plural,exercise.wav,2650,exercise.png,catN_dance.png
+B,3,singular,riceA_eat.wav,2755,haveameal.png,drinkwater.png
+B,4,plural,rabbitN_pigL_scribble.wav,2441,rabbitL_pigN_scribble.png,rabbitN_pigL_scribble.png
+B,5,singular,tigerN_lionL_shout.wav,2833,tigerN_lionL_shout.png,tigerL_lionN_shout.png
+B,6,plural,zebraN_rabbitL_lean.wav,2650,zebraL_rabbitN_lean.jpeg,zebraN_rabbitL_lean.jpeg
