@@ -10,6 +10,14 @@ PennController.ResetPrefix(null);
 // code omitted in interest of space
 
 newTrial("instructions",
+    fullscreen()
+    ,
+    // Start calibrating the eye-tracker, allow for up to 2 attempts
+    // 50 means that calibration succeeds when 50% of the estimates match the click coordinates
+    // Increase the threshold for better accuracy, but more risks of losing participants
+    //getEyeTracker("tracker").calibrate(50,2)
+    //,
+
     defaultText
         .center()
         .print()
@@ -95,6 +103,10 @@ Template("one_image.csv", row =>
         ,
         getAudio("audio")
             .wait("first")
+        ,
+        // Check/recalibrate the tracker before every trial
+        //newEyeTracker("tracker").calibrate(50,2)
+        //,
     )
 );
 
@@ -160,5 +172,9 @@ Template("two_images.csv", row =>
         ,
         getAudio("audio")
             .wait("first")
+        ,
+        // Check/recalibrate the tracker before every trial
+        //newEyeTracker("tracker").calibrate(50,2)
+        //,
     )
 );
