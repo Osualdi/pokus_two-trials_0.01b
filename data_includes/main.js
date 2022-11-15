@@ -91,7 +91,6 @@ Template("one_image.csv", row =>
         ,
         newCanvas("side-by-side", 200,200)
             .add(  0, 0, getImage("singular"))
-            //.add(250, 0, getImage("singular"))
             .center()
             .print()
             .log()
@@ -107,10 +106,6 @@ Template("one_image.csv", row =>
               .start()
             .wait()
         ,
-        /*newKey("keypress", "FJ")
-            .log()
-            .wait()
-            ,*/
         newAudio("audio", row.audio)
             .play()
         ,
@@ -145,9 +140,6 @@ getEyeTracker("tracker")
 
 Template("one_images_main.csv", row =>
     newTrial("experimental-trial_main",
-        /*newAudio("audio", row.audio)
-            .play()
-        ,*/
         // Check/recalibrate the tracker before every trial
         newEyeTracker("tracker").calibrate(50,2)
         ,
@@ -159,7 +151,6 @@ Template("one_images_main.csv", row =>
         ,
         newCanvas("side-by-side", 200,200)
             .add(  0, 0, getImage("singular"))
-            //.add(250, 0, getImage("singular"))
             .center()
             .print()
             .log()
@@ -175,10 +166,6 @@ Template("one_images_main.csv", row =>
               .start()
             .wait()
         ,
-        /*newKey("keypress", "FJ")
-            .log()
-            .wait()
-            ,*/
         newAudio("audio", row.audio)
             .play()
         ,
@@ -195,9 +182,6 @@ SendResults() // here it will send results
 
 Template("two_images.csv", row =>
     newTrial("experimental-trial_two_images",
-        /*newAudio("audio", row.audio)
-            .play()
-        ,*/
         // Check/recalibrate the tracker before every trial
         newEyeTracker("tracker").calibrate(50,2)
         ,
@@ -228,10 +212,6 @@ Template("two_images.csv", row =>
               .start()
             .wait()
         ,
-        /*newKey("keypress", "FJ")
-            .log()
-            .wait()
-            ,*/
         newAudio("audio", row.audio)
             .play()
         ,
