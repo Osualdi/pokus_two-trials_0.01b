@@ -22,7 +22,7 @@ newTrial("instructions",
         .center()
         .print()
     ,
-    defaultImage.size("20vh", "20vh")
+    defaultImage.size("50vh", "20vw")
     ,    
     newText("study-boy-sentence", "Welcome!<p>In this experiment, you will hear and read a sentence, and see two images.</p><b>Select the image that better matches the sentence:</b><p>Press the <b>F</b> key to select the image on the left.<br>Press the <b>J</b> key to select the image on the right.</p>")
         .center()
