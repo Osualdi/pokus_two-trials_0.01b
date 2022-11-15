@@ -22,7 +22,7 @@ newTrial("instructions",
         .center()
         .print()
     ,
-    defaultImage.size("50vh", "20vw")
+    defaultImage.size("40vw", "50vh")
     ,    
     newText("study-boy-sentence", "Welcome!<p>In this experiment, you will hear and read a sentence, and see two images.</p><b>Select the image that better matches the sentence:</b><p>Press the <b>F</b> key to select the image on the left.<br>Press the <b>J</b> key to select the image on the right.</p>")
         .center()
@@ -86,10 +86,12 @@ Template("one_image.csv", row =>
         // 250ms delay
         newTimer(250).start().wait()
         ,
-        newImage("singular", row.singular_image)
-            .size(200, 200)
+        defaultImage.size("50vh", "40vw")
         ,
-        newCanvas("side-by-side", 200,200)
+        newImage("singular", row.singular_image)
+            //.size(200, 200)
+        ,
+        newCanvas("side-by-side", "50vh","40vw")
             .add(  0, 0, getImage("singular"))
             .center()
             .print()
@@ -146,10 +148,12 @@ Template("one_images_main.csv", row =>
         // 250ms delay
         newTimer(250).start().wait()
         ,
-        newImage("singular", row.singular_image)
-            .size(200, 200)
+        defaultImage.size("50vh", "40vw")
         ,
-        newCanvas("side-by-side", 200,200)
+        newImage("singular", row.singular_image)
+            //.size(200, 200)
+        ,
+        newCanvas("side-by-side", "50vh", "40vw")
             .add(  0, 0, getImage("singular"))
             .center()
             .print()
@@ -188,15 +192,17 @@ Template("two_images.csv", row =>
         // 250ms delay
         newTimer(250).start().wait()
         ,
+        defaultImage.size("50vh", "40vw")
+        ,
         newImage("plural", row.plural_image)
-            .size(200, 200)
+            //.size(200, 200)
         ,
         newImage("singular", row.singular_image)
-            .size(200, 200)
+            //.size(200, 200)
         ,
-        newCanvas("side-by-side", 450,200)
-            .add(  0, 0, getImage("plural"))
-            .add(250, 0, getImage("singular"))
+        newCanvas("side-by-side", "80vw", "50vh")
+            .add( "0vw", "0vh", getImage("plural"))
+            .add("40vw", "0vh", getImage("singular"))
             .center()
             .print()
             .log()
