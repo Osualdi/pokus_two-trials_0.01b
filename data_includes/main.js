@@ -86,13 +86,13 @@ Template("one_image.csv", row =>
         // 250ms delay
         newTimer(250).start().wait()
         ,
-        defaultImage.size("50vh", "40vw")
+        defaultImage.size("40vw", "50vh")
         ,
         newImage("singular", row.singular_image)
             //.size(200, 200)
         ,
-        newCanvas("side-by-side", "50vh","40vw")
-            .add(  0, 0, getImage("singular"))
+        newCanvas("side-by-side", "40vw", "50vh")
+            .add( "0vw", "0vh", getImage("singular"))
             .center()
             .print()
             .log()
@@ -148,13 +148,13 @@ Template("one_images_main.csv", row =>
         // 250ms delay
         newTimer(250).start().wait()
         ,
-        defaultImage.size("50vh", "40vw")
+        defaultImage.size("40vw", "50vh")
         ,
         newImage("singular", row.singular_image)
             //.size(200, 200)
         ,
-        newCanvas("side-by-side", "50vh", "40vw")
-            .add(  0, 0, getImage("singular"))
+        newCanvas("side-by-side", "40vw", "50vh")
+            .add(  "0vw", "0vh", getImage("singular"))
             .center()
             .print()
             .log()
@@ -192,7 +192,7 @@ Template("two_images.csv", row =>
         // 250ms delay
         newTimer(250).start().wait()
         ,
-        defaultImage.size("50vh", "40vw")
+        defaultImage.size("40vw", "50vh")
         ,
         newImage("plural", row.plural_image)
             //.size(200, 200)
@@ -200,9 +200,9 @@ Template("two_images.csv", row =>
         newImage("singular", row.singular_image)
             //.size(200, 200)
         ,
-        newCanvas("side-by-side", "80vw", "50vh")
+        newCanvas("side-by-side", "90vw", "50vh")
             .add( "0vw", "0vh", getImage("plural"))
-            .add("40vw", "0vh", getImage("singular"))
+            .add("45vw", "0vh", getImage("singular"))
             .center()
             .print()
             .log()
