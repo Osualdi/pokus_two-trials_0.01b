@@ -69,7 +69,7 @@ newTrial("instructions",
         .wait() 
    );
 
-// Experimental trial //***NOT WORKING FROM HERE***
+// Experimental trial *** NOT WORKING FROM HERE *** randomisation *** space/width between monitor & picture
 Template("one_image.csv", row =>
     newTrial("experimental-trial_practice",
         // Check/recalibrate the tracker before every trial
@@ -226,3 +226,5 @@ Template("two_images.csv", row =>
     )
 );
 SendResults() // here it will send results
+
+//***ending screen: picture (mc_excited.png) & text ("아주 잘 하셨어요!")
