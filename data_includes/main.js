@@ -24,10 +24,10 @@ newTrial("instructions",
     defaultImage.size("30vw", "50vh")
     ,   
 
-    newText("basic-boy-sentence", "Welcome!<p>In this experiment, you will hear and read a sentence, and see two images.</p><b>Select the image that better matches the sentence:</b><p>Press the <b>F</b> key to select the image on the left.<br>Press the <b>J</b> key to select the image on the right.</p>")
+    newText("basic-boy-sentence", "안녕하세요!<p>만나서 반가워요!</p>")
         .center()
     ,
-    newImage("boy-basic", "mc.png").center().print()
+    newImage("boy-basic", "mc_hello.png").center().print()
     ,
 	newButton("boyBasic-button", "Go to the first trial") //just checking to remove a button
         .center()
@@ -41,10 +41,10 @@ newTrial("instructions",
 	getButton("boyBasic-button").remove()
 	,
 	
-    newText("hello-boy-sentence", "Welcome!<p>In this experiment, you will hear and read a sentence, and see two images.</p><b>Select the image that better matches the sentence:</b><p>Press the <b>F</b> key to select the image on the left.<br>Press the <b>J</b> key to select the image on the right.</p>")
+    newText("hello-boy-sentence", "지금부터 제가 이야기를 들려드릴 거예요.</p><b>제 이야기를 잘 듣고, 무엇을 말하는지 맞춰 보세요.</b><p>왼쪽 그림같으면 <b>F</b> 를 누르시고, <br>오른쪽 그림같으면 <b>J</b> 를 누르세요.</p>")
         .center()
     ,
-    newImage("boy-hello", "mc_hello.png").center().print()
+    newImage("boy-hello", "mc.png").center().print()
     ,
     newButton("boyHello-button", "Go to the first trial") //just checking to remove a button
         .center()
