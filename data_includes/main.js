@@ -29,7 +29,7 @@ newTrial("instructions",
     ,
     newImage("boy-basic", "mc_hello.png").center().print()
     ,
-	newButton("boyBasic-button", "Go to the first trial") //just checking to remove a button
+	newButton("boyBasic-button", "Go to the first trial") //***button no need; automatically move to next after 3s***
         .center()
         .print()
         .wait()
@@ -46,7 +46,7 @@ newTrial("instructions",
     ,
     newImage("boy-hello", "mc.png").center().print()
     ,
-    newButton("boyHello-button", "Go to the first trial") //just checking to remove a button
+    newButton("boyHello-button", "Go to the first trial") //***button no need; automatically move to next after 7s***
         .center()
         .print()
 		.wait()
@@ -58,18 +58,18 @@ newTrial("instructions",
 	getButton("boyHello-button").remove()
 	,
 	
-	newText("happy-boy-sentence", "Student is happy and excited without any problem.")
+	newText("happy-boy-sentence", "먼저 연습을 해 볼까요?")
         .center()
     ,
-    newImage("boyExcited", "mc_excited.png").center().print()
+    newImage("boyExcited", "mc_happy.png").center().print()
     ,
-	newButton("Go to the first trial")
+	newButton("Go to the first trial") //***button no need; automatically move to next after 3s***
         .center()
         .print()
         .wait() 
    );
 
-// Experimental trial
+// Experimental trial //***NOT WORKING FROM HERE***
 Template("one_image.csv", row =>
     newTrial("experimental-trial_practice",
         // Check/recalibrate the tracker before every trial
