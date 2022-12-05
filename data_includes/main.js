@@ -33,7 +33,7 @@ newTrial("instructions",
             .start()
         .wait()
     ,
-	/*newButton("boyBasic-button", "Go to the first trial") //***button no need; automatically move to next after 3s***
+	/*newButton("boyBasic-button", "Go to the first trial")
         .center()
         .print()
         .wait()
@@ -50,11 +50,11 @@ newTrial("instructions",
     ,
     newImage("boy-hello", "mc.png").center().print()
     ,
-    newTimer("preview", 3000) // automatically move to next after 3s
+    newTimer("preview", 7000) // automatically move to next after 3s
             .start()
         .wait()
     ,
-    /*newButton("boyHello-button", "Go to the first trial") //***button no need; automatically move to next after 7s***
+    /*newButton("boyHello-button", "Go to the first trial")
         .center()
         .print()
 		.wait()
@@ -74,7 +74,7 @@ newTrial("instructions",
     newTimer("preview", 3000) // automatically move to next after 3s
             .start()
         .wait()
-	/*newButton("Go to the first trial") //***button no need; automatically move to next after 3s***
+	/*newButton("Go to the first trial")
         .center()
         .print()
         .wait() */ //button is removed	
