@@ -15,6 +15,8 @@ newTrial("instructions",
     // Increase the threshold for better accuracy, but more risks of losing participants
     //getEyeTracker("tracker").calibrate(50,2)
     //,
+    fullscreen()
+    ,
     defaultText
         .center()
         .print()
@@ -59,7 +61,7 @@ newTrial("instructions",
             .start()
         .wait()
     ,
-    fullscreen()
+    fullscreen() //changed position of fullscreen and still there is nothing happening so will have to chcek it or send them email;
    );
 
 // Experimental trial *** NOT WORKING FROM HERE *** randomisation *** space/width between monitor & picture
