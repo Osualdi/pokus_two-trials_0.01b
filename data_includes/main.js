@@ -10,8 +10,6 @@ PennController.ResetPrefix(null);
 // code omitted in interest of space
 
 newTrial("instructions",
-    fullscreen()
-    ,
     // Start calibrating the eye-tracker, allow for up to 2 attempts
     // 50 means that calibration succeeds when 50% of the estimates match the click coordinates
     // Increase the threshold for better accuracy, but more risks of losing participants
@@ -39,7 +37,7 @@ newTrial("instructions",
 	,
 	
     newText("hello-boy-sentence", "지금부터 제가 이야기를 들려드릴 거예요.</p><b>제 이야기를 잘 듣고, 무엇을 말하는지 맞춰 보세요.</b><p>왼쪽 그림같으면 <b>F</b> 를 누르시고, <br>오른쪽 그림같으면 <b>J</b> 를 누르세요.</p>")
-        .center()
+        .center() // Not sure if text about keyboard is needed anymore?
     ,
     newImage("boy-hello", "mc.png").center().print()
     ,
@@ -60,6 +58,8 @@ newTrial("instructions",
     newTimer("preview", 3000) // automatically move to next after 3s
             .start()
         .wait()
+    ,
+    fullscreen()
    );
 
 // Experimental trial *** NOT WORKING FROM HERE *** randomisation *** space/width between monitor & picture
@@ -181,9 +181,9 @@ Template("two_images.csv", row =>
         ,
         newImage("singular", row.singular_image)
         ,
-        newCanvas("side-by-side", "200vw", "50vh")
-            .add( "0vw", "0vh", getImage("plural"))
-            .add("100vw", "0vh", getImage("singular"))
+        newCanvas("side-by-side", "100vw", "50vh") // Should be canvas of 100% of the display size
+            .add( "10vw", "0vh", getImage("plural")) // 10% of left; around image should be enough space for now;
+            .add("60vw", "0vh", getImage("singular")) // 60% of left; around image should be enough space for now;
             .center()
             .print()
             .log()
