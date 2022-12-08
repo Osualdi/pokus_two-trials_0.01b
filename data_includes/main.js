@@ -33,38 +33,24 @@ newTrial("instructions",
             .start()
         .wait()
     ,
-	/*newButton("boyBasic-button", "Go to the first trial") //***button no need; automatically move to next after 3s***
-        .center()
-        .print()
-        .wait()
-	,*/ //button is removed	
     getText("basic-boy-sentence").remove()
 	,	
 	getImage("boy-basic").remove()
 	,
-	/*getButton("boyBasic-button").remove()
-	,*/
 	
     newText("hello-boy-sentence", "지금부터 제가 이야기를 들려드릴 거예요.</p><b>제 이야기를 잘 듣고, 무엇을 말하는지 맞춰 보세요.</b><p>왼쪽 그림같으면 <b>F</b> 를 누르시고, <br>오른쪽 그림같으면 <b>J</b> 를 누르세요.</p>")
         .center()
     ,
     newImage("boy-hello", "mc.png").center().print()
     ,
-    newTimer("preview", 3000) // automatically move to next after 3s
+    newTimer("preview", 7000) // automatically move to next after 7s
             .start()
         .wait()
     ,
-    /*newButton("boyHello-button", "Go to the first trial") //***button no need; automatically move to next after 7s***
-        .center()
-        .print()
-		.wait()
-	,*/ //button is removed	
     getText("hello-boy-sentence").remove()
 	,
     getImage("boy-hello").remove()
 	,
-	/*getButton("boyHello-button").remove()
-	,*/
 	
 	newText("happy-boy-sentence", "먼저 연습을 해 볼까요?")
         .center()
@@ -74,10 +60,6 @@ newTrial("instructions",
     newTimer("preview", 3000) // automatically move to next after 3s
             .start()
         .wait()
-	/*newButton("Go to the first trial") //***button no need; automatically move to next after 3s***
-        .center()
-        .print()
-        .wait() */ //button is removed	
    );
 
 // Experimental trial *** NOT WORKING FROM HERE *** randomisation *** space/width between monitor & picture
@@ -199,9 +181,9 @@ Template("two_images.csv", row =>
         ,
         newImage("singular", row.singular_image)
         ,
-        newCanvas("side-by-side", "90vw", "50vh")
+        newCanvas("side-by-side", "200vw", "50vh")
             .add( "0vw", "0vh", getImage("plural"))
-            .add("45vw", "0vh", getImage("singular"))
+            .add("100vw", "0vh", getImage("singular"))
             .center()
             .print()
             .log()
