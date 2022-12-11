@@ -179,6 +179,16 @@ Template("two_images.csv", row =>
         ,
         defaultImage.size("30vw", "50vh")
         ,
+        /* **Work in progress**
+        // We positioning of the four images is random. 
+        // This function is needed for the randomization. 
+        // It makes an array of the four picture files, and shuffles this array.
+        // While testing in different code it is working so far alright.
+        images = [row.image1,row.image2,row.image3,row.image4].sort(v=>Math.random()-Math.random()) 
+        ,
+        */
+       //images = [row.singular_image,row.plural_image].sort(v=>Math.random()-Math.random())
+       //,
         newImage("plural", row.plural_image)
         ,
         newImage("singular", row.singular_image)
@@ -190,6 +200,18 @@ Template("two_images.csv", row =>
             .print()
             .log()
         ,
+        /*
+        newCanvas("left_side", "50vw", "50vh") // Should be canvas of 50% of the display size
+            .add( "center at 50%", "middle at 50%", newImage(images[0])) // *not sure* of left; around image should be enough space for now;
+            .print("center at 25%", "middle at 50%")
+            .log()
+        ,
+        newCanvas("right_side", "50vw", "50vh") // Should be canvas of 50% of the display size
+            .add("center at 50%", "middle at 50%", newImage(images[1])) // *not sure* of right; around image should be enough space for now;
+            .print("center at 75%", "middle at 50%")
+            .log()
+        ,
+         */
         getEyeTracker("tracker")
             .add(   // We track the Canvas elements   
                 getCanvas("side-by-side")
@@ -219,6 +241,25 @@ Template("two_images.csv", row =>
         ,
         newTimer(250).start().wait() //timer before new image;
     )
+    /* **Work in progress**
+    // save the required trial info in the results file 
+    .log("Subject"              , getVar("Subject")         )
+    .log( "image1"              , row.image1                )
+    .log( "image2"              , row.image2                )            
+    .log( "image3"              , row.image3                )   
+    .log( "image4"              , row.image4                )
+    .log( "toplefttimage"       , images[0]                 ) // save which image is printed here (since the array was shuffled)
+    .log( "bottomleftimage"     , images[1]                 ) // save which image is printed here (since the array was shuffled)
+    .log( "toprightimage"       , images[2]                 ) // save which image is printed here (since the array was shuffled)
+    .log( "bottomrightimage"    , images[3]                 ) // save which image is printed here (since the array was shuffled)
+    .log( "sentence"            , row.audio                 )           
+    .log( "stimulustype"        , row.stimulustype          )  
+    .log( "stimuluscondition"   , row.stimuluscondition     )     
+    .log( "list"                , row.list                  )
+    .log( "stimulusset"         , row.pair                  )
+    .log( "ViewportWidth"       , window.innerWidth         ) // Screensize: width
+    .log( "ViewportHeight"      , window.innerHeight        ) // Screensize: heigth 
+    */
 );
 SendResults() // here it will send results
 
