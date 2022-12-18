@@ -1,5 +1,6 @@
-// Type code below this line.
+//Author: Jaroslav Martinec 
 
+// Type code below this line.
 // Remove command prefix
 PennController.ResetPrefix(null);
 
@@ -9,6 +10,54 @@ PennController.ResetPrefix(null);
 // Instructions
 // code omitted in interest of space
 
+//this will hide the progress bar  
+var showProgressBar = false;
+
+/* This will be good to keep in our changed version; -> rewrite it for our logical structure;
+// Sequence of the elements in the experiment
+Sequence("Preload", "Loading", "WebcamCheck", "ChromeCheck", "L1Check", "Welcome",
+    "Consent", "WebcamSetUp", "FailedCalibrationLink", "AudioSetUp", "AudioCheck",
+    "Instructions", "PractiseSession", "EndOfPractise", "Counter", randomize("Block1"),
+    "BlinkBreak", "AudioSetUp2", randomize("Block2"), "LanguageQuestionnairePage",
+    "WebcamQuestionnairePage", "Send", "FinalPage")
+*/
+
+/* 
+// Original part of the code from expretiment; Some kind of loadind screen; (???)
+// Below is a fake loading page. I added this because the first page was often a bit
+// glitchy, and this way, there is more loading time. Note that this is a quick-'n-dirty
+// fix though.
+    newTrial("Loading",
+    newText("Loading", "Loading...")
+    .center()
+    .print()
+    ,
+// After a 1000 ms, a continue button is printed.
+    newTimer(1000)
+    .start()
+    .wait()
+    ,
+    getText("Loading")
+    .remove()
+    ,
+    newText("Continue", "Click on the button below to start the experiment!")
+    .center()
+    .print()
+    ,
+    newButton("ContinueButton", "Continue to the experiment")
+    .center()
+    .print()
+    .wait()
+)
+*/
+
+/**
+ * Permisson part
+ * Some webcam check and maybe audio check;
+ */
+
+
+// And we present the task instructions.
 newTrial("instructions",
     // Start calibrating the eye-tracker, allow for up to 2 attempts
     // 50 means that calibration succeeds when 50% of the estimates match the click coordinates
@@ -38,7 +87,8 @@ newTrial("instructions",
 	getImage("boy-basic").remove()
 	,
 	
-    newText("hello-boy-sentence", "지금부터 제가 이야기를 들려드릴 거예요.</p><b>제 이야기를 잘 듣고, 무엇을 말하는지 맞춰 보세요.</b><p>왼쪽 그림같으면 <b>F</b> 를 누르시고, <br>오른쪽 그림같으면 <b>J</b> 를 누르세요.</p>")
+    newText("hello-boy-sentence", "지금부터 제가 이야기를 들려드릴 거예요.</p><b>제 이야기를 잘 듣고, 무엇을 말하는지 맞춰 보세요.</b>") 
+    //<p>왼쪽 그림같으면 <b>F</b> 를 누르시고, <br>오른쪽 그림같으면 <b>J</b> 를 누르세요.</p>")
         .center() // Not sure if text about keyboard is needed anymore?
     ,
     newImage("boy-hello", "mc.png").center().print()
@@ -67,6 +117,48 @@ newTrial("instructions",
 // Experimental trial *** NOT WORKING FROM HERE *** randomisation *** space/width between monitor & picture
 Template("one_image.csv", row =>
     newTrial("experimental-trial_practice",
+        /**
+         * // The callback commands lets us log the X and Y coordinates of the estimated
+         * // gaze-locations at each recorded moment in time (Thanks to Jeremy Zehr for
+         * // writing this function)
+         * newEyeTracker("tracker",1).callback( function (x,y) {
+         * if (this != getEyeTracker("tracker")._element.elements[0]) return;
+         * getEyeTracker("tracker")._element.counts._Xs.push(x);
+         * getEyeTracker("tracker")._element.counts._Ys.push(y);
+         * })
+         * ,
+         * newFunction(()=>{
+         * getEyeTracker("tracker")._element.counts._Xs = [];
+         * getEyeTracker("tracker")._element.counts._Ys = [];
+         * }).call()
+         * ,
+         * 
+         * // Show the mouse cursor (needed if calibration fails)
+         * newFunction( ()=>{
+         * $("body").css({
+         * width: '100vw',
+         * height: '100vh',
+         * cursor: 'default'
+         * });
+         * }).call()
+         * ,
+         * getEyeTracker("tracker")
+         * .test.score(1) //.calibrate(50) // Each trial starts with a calibration
+         * check to see whether the treshold of 50 is still reached.
+         * .log() // log the calibration scores
+         * ,
+         * 
+         * // Hide the mouse cursor
+         * newFunction( ()=>{
+         *  $("body").css({
+         * width: '100vw',
+         * height: '100vh',
+         * cursor: 'none'
+         * });
+         * }).call()
+         * ,  
+        */    
+    
         // Check/recalibrate the tracker before every trial
         newEyeTracker("tracker").calibrate(50,2)
         ,
@@ -241,7 +333,7 @@ Template("two_images.csv", row =>
         ,
         newTimer(250).start().wait() //timer before new image;
     )
-    /* **Work in progress**
+    /* **Work in progress** -> those parts will be used for PHP collection of data;
     // save the required trial info in the results file 
     .log("Subject"              , getVar("Subject")         )
     .log( "image1"              , row.image1                )
@@ -264,3 +356,28 @@ Template("two_images.csv", row =>
 SendResults() // here it will send results
 
 //***ending screen: picture (mc_excited.png) & text ("아주 잘 하셨어요!")
+
+/**
+ * 
+ * // And we show a clozing page.
+ * newTrial("FinalPage",
+ * newTimer(100)
+ * .start()
+ * .wait()
+ * ,
+ * getHtml("downloadspeed")
+ * .remove()
+ * ,
+ * exitFullscreen()
+ * ,
+ * newText("Final","This is the end of the experiment. <br> Thank you for your
+ * participation! If you have any questions or if you want to know more about the
+ * results, please get in touch with me via mieke.slim@ugent.be")
+ * ,
+ * newCanvas("myCanvas", "60vw" , "60vh")
+ * .settings.add(0,0, getText("Final"))
+ * .print("center at 50%", "middle at 50%")
+ * ,
+ * newButton("waitforever").wait() // Not printed: wait on this page forever
+ * )
+ */
