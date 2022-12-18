@@ -1,6 +1,8 @@
 //Author: Jaroslav Martinec 
 
-// Type code below this line.
+// The participants passively listen to sentences while they look at four images,
+// arranged in the four quadrants of the display.
+
 // Remove command prefix
 PennController.ResetPrefix(null);
 
@@ -27,27 +29,27 @@ Sequence("Preload", "Loading", "WebcamCheck", "ChromeCheck", "L1Check", "Welcome
 // Below is a fake loading page. I added this because the first page was often a bit
 // glitchy, and this way, there is more loading time. Note that this is a quick-'n-dirty
 // fix though.
-    newTrial("Loading",
+newTrial("Loading",
     newText("Loading", "Loading...")
-    .center()
-    .print()
+        .center()
+        .print()
     ,
 // After a 1000 ms, a continue button is printed.
-    newTimer(1000)
-    .start()
-    .wait()
-    ,
+    ewTimer(1000)
+        .start()
+        .wait()
+        ,
     getText("Loading")
-    .remove()
+        .remove()
     ,
     newText("Continue", "Click on the button below to start the experiment!")
-    .center()
-    .print()
+        .center()
+        .print()
     ,
     newButton("ContinueButton", "Continue to the experiment")
-    .center()
-    .print()
-    .wait()
+        .center()
+        .print()
+        .wait()
 )
 */
 
@@ -55,6 +57,134 @@ Sequence("Preload", "Loading", "WebcamCheck", "ChromeCheck", "L1Check", "Welcome
  * Permisson part
  * Some webcam check and maybe audio check;
  */
+
+/*
+ * We ask the participants whether they give permission to use the webcam (even
+ * though the same question should have been promted by the browser), whether they are
+ * on Chrome, and whether they speak English as an L1. If they answer 'no' on any of
+ * these questions, they cannot continue to the experiment.
+ * */
+
+/*
+newTrial("WebcamCheck",
+    newText("PermissionWebcam", "Three brief questions before we begin:<br><br>We
+        need to use your webcam to record where you are looking on the screen. We will
+        <b>not</b> record any video or collect any other type of data that may reveal
+        your identity. Do you give us permission to use your webcam?")
+    ,
+
+    // They indicate their response with a keyboard press
+    newText("NoPermission", "No, I do not give my permission<br>Press the 'J' key")
+    ,
+    newText("YesPermission", "Yes, I give my permission,<br>Press the 'F' key")
+    ,
+    newCanvas("ChecksCanvas", "60vw" , "20vh")
+        .add("center at 50%", "top at 10%", getText("PermissionWebcam"))
+        .add("center at 20%", "top at 80%", getText("YesPermission"))
+        .add("center at 80%", "top at 80%", getText("NoPermission"))
+        .print("center at 50%", "top at 25%")
+    ,
+    // Implement the keyboard response keys
+    newKey("yesno", "FJ")
+        .wait()
+    ,
+    // And check which key was pressed
+    getKey("yesno")
+    // If they select yes ('F'), the experiment continues. If they select no 'J',
+    // they are send to a page that says that they cannot participate in the experiment.
+    
+    .test.pressed("F")
+        .failure(
+            getCanvas("ChecksCanvas")
+                .remove()
+            ,
+            newCanvas("NoPermision", "60vw" , "20vh")
+                .add("center at 50%", "top at 10%", newText("Unfortunately you cannot participate in this study. Please close the experiment by closing the browser (you can ignore possible pop-up screens)"))
+                .print("center at 50%", "top at 25%")
+            ,
+            newButton("waitforever") // The button is never printed, so they're stuck on this page.
+                .wait()
+        )
+)
+*/
+
+/* 
+// The following section works the same as the 'WebcamCheck' section
+newTrial("ChromeCheck",
+    newText("ChromeCheckText", "Three brief questions before we begin:<br><br>This
+        study only works well if you are using the Google Chrome browser on a laptop or
+        desktop computer (so not on a mobile phone or tablet). Are you currently using
+        <b> Google Chrome Desktop </b>?")
+    ,
+    newText("NoChrome", "No, I am using another browser/device<br>Press the 'J' key")
+    ,
+    newText("YesChrome", "Yes, I am currently using Chrome Desktop<br>Press the 'F' key")
+    ,
+    newCanvas("ChecksCanvas", "60vw" , "20vh")
+        .add("center at 50%", "top at 10%", getText("ChromeCheckText"))
+        .add("center at 20%", "top at 80%", getText("YesChrome"))
+        .add("center at 80%", "top at 80%", getText("NoChrome"))
+        .print("center at 50%", "top at 25%")
+    ,
+    newKey("yesno", "FJ")
+        .wait()
+    ,
+    getKey("yesno")
+        .test.pressed("F")
+        .failure(
+            getCanvas("ChecksCanvas")
+                .remove()
+            ,
+            newCanvas("NoChrome", "60vw" , "20vh")
+                .add("center at 50%", "top at 10%", newText("Unfortunately, this
+                    experiment only works on Google Chrome (which can be downloaded for
+                    free). Please close the experiment by closing the browser (you may
+                    ignore possible pop-up screens), and come back on Chrome."))
+                .print("center at 50%", "top at 25%")
+                ,
+            newButton("waitforever")
+                .wait()
+        )
+)
+
+// The following section works the same as the 'WebcamCheck' section
+newTrial("L1Check",
+    newText("L1CheckText", "Three brief questions before we begin:<br><br>To
+        participate in this study, it is required that you are a <b>native speaker of
+        English</b>. Are you a native speaker of English?")
+    ,
+    newText("NoL1", "No, I am not a native speaker of English<br>Press the 'J' key")
+    ,
+    newText("YesL1", "Yes, English is my first language<br>Press the 'F' key")
+    ,
+    newCanvas("ChecksCanvas", "60vw" , "20vh")
+        .add("center at 50%", "top at 10%", getText("L1CheckText"))
+        .add("center at 20%", "top at 80%", getText("YesL1"))
+        .add("center at 80%", "top at 80%", getText("NoL1"))
+        .print("center at 50%", "top at 25%")
+    ,
+    newKey("yesno", "FJ")
+        .wait()
+    ,
+    getKey("yesno")
+        .test.pressed("F")
+            .failure(
+                getCanvas("ChecksCanvas")
+                    .remove()
+                ,
+                newCanvas("NoL1", "60vw" , "20vh")
+                    .add("center at 50%", "top at 10%", newText("Unfortunately, you are
+                        not eligible to participate in this study. Please close the
+                        experiment by closing the browser (you may ignore possible pop-up
+                        screens)."))
+                    .print("center at 50%", "top at 25%")
+                ,
+                newButton("waitforever")
+                    .wait()
+            )
+)
+*/
+
 
 
 // And we present the task instructions.
@@ -86,7 +216,7 @@ newTrial("instructions",
 	,	
 	getImage("boy-basic").remove()
 	,
-	
+
     newText("hello-boy-sentence", "지금부터 제가 이야기를 들려드릴 거예요.</p><b>제 이야기를 잘 듣고, 무엇을 말하는지 맞춰 보세요.</b>") 
     //<p>왼쪽 그림같으면 <b>F</b> 를 누르시고, <br>오른쪽 그림같으면 <b>J</b> 를 누르세요.</p>")
         .center() // Not sure if text about keyboard is needed anymore?
@@ -112,7 +242,7 @@ newTrial("instructions",
         .wait()
     ,
     fullscreen() //changed position of fullscreen and still there is nothing happening so will have to chcek it or send them email;
-   );
+);
 
 // Experimental trial *** NOT WORKING FROM HERE *** randomisation *** space/width between monitor & picture
 Template("one_image.csv", row =>
