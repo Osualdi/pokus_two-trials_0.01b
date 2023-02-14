@@ -1,4 +1,4 @@
-//Author: Jaroslav Martinec 
+//Author: Jaroslav Martinec, Department of Asian Studies, Palacký University in Olomouc;
 
 // The participants passively listen to sentences while they look at four images,
 // arranged in the four quadrants of the display.
