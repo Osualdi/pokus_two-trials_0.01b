@@ -1,7 +1,7 @@
 //Author: Jaroslav Martinec, Department of Asian Studies, Palacký University in Olomouc;
 
-// The participants passively listen to sentences while they look at four images,
-// arranged in the four quadrants of the display.
+// The participants passively listen to sentences while they look at images,
+// arranged in the order of CSV files on the screen.
 
 // Remove command prefix
 PennController.ResetPrefix(null);
@@ -337,8 +337,8 @@ Template("one_image.csv", row =>
             .stop()
         ,
         // Check/recalibrate the tracker before every trial
-        newEyeTracker("tracker").calibrate(50,2)
-        ,
+        //newEyeTracker("tracker").calibrate(50,2)
+        //,
         newTimer(250).start().wait() //timer before new image;
     )
 );
@@ -384,8 +384,8 @@ Template("one_images_main.csv", row =>
             .stop()
         ,
         // Check/recalibrate the tracker before every trial
-        newEyeTracker("tracker").calibrate(50,2)
-        ,
+        //newEyeTracker("tracker").calibrate(50,2)
+        //,
         newTimer(250).start().wait() //timer before new image;
     )
 );
@@ -459,8 +459,8 @@ Template("two_images.csv", row =>
             .stop()
         ,
         // Check/recalibrate the tracker before every trial
-        newEyeTracker("tracker").calibrate(50,2)
-        ,
+        //newEyeTracker("tracker").calibrate(50,2)
+        //,
         newTimer(250).start().wait() //timer before new image;
     )
     /* **Work in progress** -> those parts will be used for PHP collection of data;
